@@ -10,9 +10,9 @@ namespace SmartHomeController
     public class SmartDevice
     {
         // Private fields
-        private int deviceId;
-        private string deviceName;
-        private bool status;
+        public int deviceId;
+        public string deviceName;
+        public bool status;
 
         // Public properties
         public int DeviceID
@@ -40,7 +40,19 @@ namespace SmartHomeController
             this.Status = false; // default status for a new smart item
 
         }
-
-       
+        public void TurnOn()
+        {
+            Status = true;
+            Console.WriteLine($"{DeviceName} with device ID {DeviceID} is now ON.");
+        }
+        public void TurnOff()
+        {
+            Status = false;
+            Console.WriteLine($"{DeviceName} with device ID {DeviceID} is now OFF.");
+        }
+        public virtual void GetStatus()
+        {
+            Console.WriteLine($"Device ID: {DeviceID}, Device Name: {DeviceName}, Status (on or off): {(Status ? "ON" : "OFF")}");
+        }
     }
 }
